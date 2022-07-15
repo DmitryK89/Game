@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Text;
+using System.Collections.Generic;
 using Game;
 
 namespace ConsoleApp
@@ -45,13 +45,17 @@ namespace ConsoleApp
         private static string GenerateSecretNumber()
         {
             var random = new Random();
-            var sb = new StringBuilder();
-            for (var i = 0; i < 4; i++)
+            var eachNumberUnique = false;
+            string secretNumber = null;
+            while (!eachNumberUnique)
             {
-                sb.Append(random.Next(1, 9));
+                secretNumber = random.Next(1000, 9999).ToString();
+                var hashSet = new HashSet<char>(secretNumber);
+                if (hashSet.Count == 4)
+                {
+                    eachNumberUnique = true;
+                }
             }
-
-            var secretNumber = sb.ToString();
             return secretNumber;
         }
     }

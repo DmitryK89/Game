@@ -18,7 +18,10 @@ namespace Game
 
         public AttemptResult CheckAttempt(string userInput)
         {
-            var result = new AttemptResult();
+            var result = new AttemptResult()
+            {
+                InputValid = true
+            };
 
             if (userInput == null || userInput.Length != 4)
             {
